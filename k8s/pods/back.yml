@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back
+  labels:
+   app: back
+  namespace: proyecto
+spec:
+  replicas: 1
+  #strategy:
+  #  type: RollingUpdate
+  selector:
+    matchLabels:
+         app: back
+  template:
+    metadata:
+      labels:
+        app: back
+    spec:
+     containers:
+     - name: back
+       image: acrjaimemayor.azurecr.io/backend
+       env:
+        - name: DATABASE_URL
+          value: "http://user1:admin123@couchdb:5984"
+       ports:
+        - containerPort: 8089
+     imagePullSecrets:
+     - name: acr-secret
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+ name: back
+ namespace: proyecto
+ labels:
+  app: back
+spec:
+ type: ClusterIP 
+ ports:
+  - port: 8089
+    targetPort: 8089
+    protocol: TCP
+ selector:
+  app: back   

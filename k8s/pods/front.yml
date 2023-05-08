@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front
+  labels:
+   app: front
+  namespace: proyecto
+spec:
+  replicas: 1
+  #strategy:
+  #  type: RollingUpdate
+  selector:
+    matchLabels:
+         app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+     containers:
+     - name: front
+       image: acrjaimemayor.azurecr.io/frontendaut:0.0.1
+       env:
+       - name: BACK
+         value: "http://back:8089/"
+       ports: 
+        - containerPort: 8080
+     imagePullSecrets:
+     - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-service
+  namespace: proyecto
+spec:
+  selector:
+    app: front
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: front-ingress
+#   namespace: proyecto
+#   annotations:
+#     kubernetes.io/ingress.class: azure/application-gateway
+#     appgw.ingress.kubernetes.io/ssl-redirect: "false"   
+# spec:
+#   rules:
+#   - http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: front-service
+#             port:
+#               number: 80
