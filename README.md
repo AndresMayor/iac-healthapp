@@ -6,8 +6,9 @@
 
 1. Linea de comandos para deplegar la infraestructura 
   
-   terraform init
-   terraform apply
+    terraform init
+   
+    terraform apply
 
 # Comandos para configurar y desplegar los pods y el ingress en el aks 
 
