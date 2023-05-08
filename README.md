@@ -6,9 +6,8 @@
 
 1. Linea de comandos para deplegar la infraestructura 
   
-      terraform init
-      
-      terraform apply
+   terraform init
+   terraform apply
 
 # Comandos para configurar y desplegar los pods y el ingress en el aks 
 
@@ -37,7 +36,7 @@
       kubectl apply -f database.yml
       kubectl apply -f back.yml
 
-# Estado de la confifuracion del aks
+# Estado de la configuración del aks
 
   ![config](./ss/configurationaks.png)
 
