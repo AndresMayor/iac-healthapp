@@ -25,27 +25,27 @@
 
 4. Nos conectamos al aks y ejecumtamos los manifiestos en el siguiente orden 
 
-      cd k8s
+     cd k8s
       
-      cd namespaces
+     cd namespaces
       
-      kubectl apply -f ns-proyecto.yml
+     kubectl apply -f ns-proyecto.yml
       
-      cd ..
+     cd ..
       
-      cd ingress
+     cd ingress
       
-      kubectl apply -f ingress.yml
+     kubectl apply -f ingress.yml
       
-      cd ..
+     cd ..
       
-      cd pods
+     cd pods
       
-      kubectl apply -f front.yml
+     kubectl apply -f front.yml
+     
+     kubectl apply -f database.yml
       
-      kubectl apply -f database.yml
-      
-      kubectl apply -f back.yml
+     kubectl apply -f back.yml
 
 # Estado de la configuración del aks
 
