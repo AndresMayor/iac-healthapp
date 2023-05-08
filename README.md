@@ -1,5 +1,7 @@
 # iac-healthapp
 
-# Diagrama IaC Provisioning
+## Diagrama Provisioning IaC
+
+  ![Infra](./ss/iacDiagram.png)
 
 
